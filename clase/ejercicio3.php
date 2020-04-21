@@ -24,12 +24,11 @@
 
 	}
 	
-	$myfile = fopen("words.txt","r") or die ("No se puede abrir archivo");
-	while(!feof($myfile)){
-		$current_word = fgets($myfile);
-		call_api($current_word);
+	$words = explode(" ", file_get_contents('words.txt'));
+	
+	for($i=0;$i<count($words);$i++){
+		call_api($words[$i]);
 	}
-	fclose ($myfile);
 	
 	
 ?>

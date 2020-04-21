@@ -14,21 +14,21 @@
 		  'X-RapidAPI-Key: dd9b30ac44msh1963fe8a53d6448p1889d2jsnafe1d3641ad1',
 		  'Content-Type: application/json'
 		]);
-
+	
+		curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		$response = curl_exec($curl);
+		curl_close($curl);
 
-
-		echo $response;
+		echo $response . PHP_EOL;
 
 	}
 	
-	$words = explode(" ", file_get_contents('words.txt'));
-	
-	for($i=0;$i<count($words);$i++){
-		json_encode(call_api($words[$i]));
-	}
-	
-	
+		$myfile = fopen("words.txt","r") or die ("No se puede abrir archivo");
+		while(!feof($myfile)){
+			$current_word = trim(fgets($myfile));
+			json_encode (call_api($current_word));
+		}
 ?>

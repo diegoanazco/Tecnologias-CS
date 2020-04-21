@@ -27,7 +27,7 @@
 	$words = explode(" ", file_get_contents('words.txt'));
 	
 	for($i=0;$i<count($words);$i++){
-		call_api($words[$i]);
+		json_encode(call_api($words[$i]));
 	}
 	
 	

@@ -58,7 +58,7 @@
 		//echo "Token BD:" . $token_time . PHP_EOL;
 		//echo "Token FIN:" . $end_token . PHP_EOL;
 		//echo "Tiempo Actual:" . $current_time . PHP_EOL;
-		if ($timeleft <= 300) {
+		if ($timeleft <= 60) {
 			if('GET'==strtoupper($_SERVER['REQUEST_METHOD'])){		
 				if($productoId == 'lenguaje'){
 						echo json_encode($lenguajes);
